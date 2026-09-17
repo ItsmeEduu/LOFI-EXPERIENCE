@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LO-FI EXPERIENCE</title>
+</head>
+<body>
+    <style>
+            body {
+                font-family: Arial, Helvetica, sans-serif;
+                max-width: 800px;
+                margin: 20px auto;
+                padding: 20px;
+                color: #ffffff;
+             
+                background: linear-gradient(135deg, #0b0c10 0%, #1f1135 50%, #0f051d 100%);
+                background-attachment: fixed;
+
+                background-image: linear-gradient(rgba(15, 5, 29, 0.75), rgba(15, 5, 29, 0.85)), url(imagens/imagemdosite.png);
+                background-size: cover;
+                background-position:  center;
+                background-repeat: no-repeat;
+            }
+            .media-container {
+                background: rgba(20, 15, 35, 0.65);
+                padding: 20px;
+                margin-bottom: 20px;
+                border-radius: 12px;
+                border: 1px solid rgba(70, 2, 197, 0.781);
+                box-shadow:  0 8px 32px 0 rgba(111, 66, 193, 0.2);
+                backdrop-filter: blur(4px);
+                animation: pulsarNeon 2s infinite alternate ease-in-out;
+            }
+
+            h2 {
+                color: #bc96ff;
+                text-shadow: 0 0 10px rgba(188, 150, 255, 0.5);
+                margin-top: 0;
+            }
+
+            video {
+                width: 100%;
+                max-width: 600px;
+                border-radius: 4px;
+            }
+            .controls {
+                margin-top: 10px;
+            }
+             button {
+                padding: 10px 15px;
+                margin-right: 5px;
+                background: linear-gradient(135deg, #0056b3 0%, #4b0082 100%); 
+                color: white;
+                border: 1px solid rgba(188, 150, 255, 0.2);
+                border-radius: 6px;
+                cursor: pointer;
+                font-weight: bold;
+                transition: all 0.3s ease;
+            }
+            button:hover {
+                background: linear-gradient(135deg, #007bff 0%, #6f42c1 100%);
+                box-shadow: 0 0 15px rgba(111, 66, 193, 0.6); 
+                transform: translateY(-2px);
+            }
+
+            @keyframes pulsarNeon {
+    0% {
+        border-color: rgba(70, 2, 197, 0.4);
+        box-shadow: 0 8px 32px 0 rgba(111, 66, 193, 0.2);
+    }
+    100% {
+        border-color: rgba(188, 150, 255, 0.8);
+        box-shadow: 0 8px 32px 0 rgba(188, 150, 255, 0.5), 0 0 15px rgba(111, 66, 193, 0.3);
+    }
+} 
+    </style>
+  
+    
+    <div class="media-container">
+        <h2>LO-FI EXPERIENCE</h2>
+            <div class="media-container" style="text-align: center;">
+        <h2>CONTROLE GERAL</h2>
+        
+        <button onclick="iniciarExperiencia()">
+            ✨ Iniciar Experiência Lo-Fi
+        </button>
+        
+        
+        <div style="margin-top: 15px; display: flex; align-items: center; justify-content: center; gap: 10px;">
+            <span>🎵 Volume da Música:</span>
+            <input type="range" id="volumeAudio" min="0" max="1" step="0.1" value="1" oninput="ajustarVolume(this.value)">
+        </div>
+    </div>
+
+        <video id="meuVideo" loop> 
+            <source src="meuvideo/16638106_3840_2160_30fps.mp4" type="video/mp4">
+            Seu Navegador não suporta este video
+        </video>
+
+        <div class="controls">
+            <button onclick="ControlarVideo('play')">▶️ Play</button>
+            <button onclick="ControlarVideo('pause')">⏸️ Pause</button>
+            <button onclick="ControlarVideo('mute')">🔇 Mutar/Desmutar</button>
+        </div>
+    </div>
+
+    <div class="media-container">
+        <h2>Aperte o Play e Relaxe</h2>
+        <audio id="meuAudio" loop> 
+            <source src="meuvideo/tunetank.com_5019_vibes_by_omka.mp3" type="audio/mpeg">
+            Seu navegador não suporta essa faixa de reprodução.
+        </audio>
+
+        <div class="controls">
+            <button onclick="controlarAudio('play')">▶️ Play</button>
+            <button onclick="controlarAudio('pause')">⏸️ Pause</button>
+            <button onclick="controlarAudio('reiniciar')">🔄 Reiniciar</button>
+        </div>
+    </div>
+
+    <script>
+        const video = document.getElementById('meuVideo');
+        function ControlarVideo(acao) {
+            if (acao === 'play') {
+                video.play();
+            } else if (acao === 'pause') {
+                video.pause();
+            } else if (acao === 'mute') {
+                video.muted = !video.muted;
+            }
+        }
+
+        const audio = document.getElementById('meuAudio');
+        function controlarAudio(acao) {
+            if(acao === 'play') {
+                audio.play();
+            } else if (acao === 'pause') {
+                audio.pause();
+            } else if (acao === 'reiniciar') {
+                audio.currentTime = 0;
+                audio.play();
+            }
+        }
+
+        function iniciarExperiencia() {
+            video.play();
+            audio.play();
+        }
+
+        function ajustarVolume(valor) {
+            audio.volume = valor;
+        }
+    </script>
+</body> 
+</html>
